@@ -30,7 +30,7 @@ export default class TaskInput extends Component<
     const descriptionValidatable: Validatable = {
       value: enteredDescription,
       required: true,
-      minLength: 3,
+      minLength: 0,
     };
 
     if (!validate(descriptionValidatable)) alert("Invalid Input!");
@@ -47,7 +47,6 @@ export default class TaskInput extends Component<
     const userInput = this.gatherUserInput();
     if (userInput) {
       taskState.addTask(userInput);
-      console.log(taskState);
       this.clearInputs();
     }
   }

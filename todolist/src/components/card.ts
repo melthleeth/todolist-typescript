@@ -35,7 +35,6 @@ export default class Card extends Component<HTMLDivElement, HTMLDivElement> {
   renderContent() {
     const listEl = document.getElementById("task-list")! as HTMLUListElement;
     listEl.innerHTML = "";
-    console.log("tasks", this.tasks);
     for (const taskItem of this.tasks) {
       new TaskItem(this.element.querySelector("ul")!.id, taskItem);
     }
