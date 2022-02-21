@@ -1,19 +1,28 @@
 {
-  "posts": [
+  "tasks": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "description": "비타민 먹기",
+      "status": 0,
+      "priority": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "description": "닭가슴살 주문",
+      "status": 0,
+      "priority": 1
+    },
+    {
+      "id": 3,
+      "description": "journal review",
+      "status": 0,
+      "priority": 1
+    },
+    {
+      "id": 4,
+      "description": "video work - summary, expressions",
+      "status": 0,
+      "priority": 1
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
