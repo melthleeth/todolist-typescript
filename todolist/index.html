@@ -2,56 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
     <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todolist🐣</title>
+    <title>Todo List</title>
   </head>
   <body>
-    <div class="card shadow">
-      <span id="task-title" class="font-medium mt-4 mb-6">Todo List</span>
-      <div id="task-subtitle">
-        <div id="info-time">
-          <span id="date" class="font-bold text-2xl mr-2 purple-2">18</span>
-          <span id="day" class="font-semibold text-lg">금요일</span>
-        </div>
-        <div id="info-lefttask">
-          <span id="lefttask" class="text-xl font-semibold mr-1 purple-3"
-            >4</span
-          ><span class="tracking-wide">개의 할일이 남아있어요!</span>
-        </div>
+    <template id="task-card">
+      <div id="card" class="card shadow">
+        <ul id="task-list"></ul>
       </div>
-      <template id="task-input">
-        <li class="task-item">
-          <div id="checkbox"></div>
-          <span class="task-content tracking-wide font-light"
-            >타입스크립트 공부하기</span
-          >
-          <button class="btn x-16">edit</button>
-          <button class="btn x-16">delete</button>
-        </li>
-      </template>
-      <ul>
-        <li class="task-item">
-          <div id="checkbox"></div>
-          <span class="task-content tracking-wide font-light"
-            >타입스크립트 공부하기</span
-          >
-          <button class="btn x-16">edit</button>
-          <button class="btn x-16">delete</button>
-        </li>
-      </ul>
-      <form id="task-input">
+    </template>
+    <template id="task-list-info">
+      <section>
+        <span id="task-title" class="font-medium mt-4 mb-6">Todo List</span>
+        <div id="task-subtitle">
+          <div id="info-time">
+            <span id="date" class="font-bold text-2xl mr-2 purple-2">18</span>
+            <span id="day" class="font-semibold text-lg">금요일</span>
+          </div>
+          <div id="info-lefttask">
+            <span id="lefttask" class="text-xl font-semibold mr-1 purple-3"
+              >4</span
+            ><span class="tracking-wide">개의 할일이 남아있어요!</span>
+          </div>
+        </div>
+      </section>
+    </template>
+    <template id="single-task">
+      <li class="task-item mb-2">
+        <div class="checkbox"></div>
+        <span class="task-content tracking-wide font-light"
+          >타입스크립트 공부하기</span
+        >
+        <div class="task-btns">
+          <button class="btn-svg mr-2">
+            <img src="svg/edit.svg" alt="edit" />
+          </button>
+          <button class="btn-svg">
+            <img src="svg/delete.svg" alt="delete" />
+          </button>
+        </div>
+      </li>
+    </template>
+    <template id="task-input">
+      <form>
         <input
-          id="new-task"
+          id="description"
           class="rounded"
           type="text"
           placeholder="Add Todo"
         />
-        <button type="submit" class="btn x-16 ml-2">add</button>
+        <button type="submit" id="btn-submit" class="btn x-20 px-2 ml-2">
+          add
+        </button>
       </form>
-    </div>
-    <div id="app"></div>
+    </template>
+    <div id="app" class="container"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
