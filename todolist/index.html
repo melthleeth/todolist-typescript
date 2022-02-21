@@ -19,7 +19,7 @@
     </template>
     <template id="task-list-info">
       <section>
-        <span id="task-title" class="font-medium mt-4 mb-6">Todo List</span>
+        <span id="task-title" class="font-medium mt-4 mb-8">Todo List</span>
         <div id="task-subtitle">
           <div id="info-time">
             <span id="date" class="font-bold text-2xl mr-2 purple-2">18</span>
@@ -35,15 +35,15 @@
     </template>
     <template id="single-task">
       <li class="task-item mb-2">
-        <div class="checkbox"></div>
+        <div class="checkbox task-complete-button"></div>
         <span class="task-content tracking-wide font-light"
           >타입스크립트 공부하기</span
         >
         <div class="task-btns">
-          <button class="btn-svg mr-2">
+          <button class="btn-svg mr-2 task-edit-button">
             <img src="svg/edit.svg" alt="edit" />
           </button>
-          <button class="btn-svg">
+          <button class="btn-svg task-delete-button">
             <img src="svg/delete.svg" alt="delete" />
           </button>
         </div>
