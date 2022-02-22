@@ -6,13 +6,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "api": "yarn dev --port 4000"
+    "api": "yarn dev --port 4000",
+    "server": "json-server --watch db.json --port 4001"
   },
   "devDependencies": {
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "global": "^4.4.0",
     "json-server": "^0.17.0"
   }
