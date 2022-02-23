@@ -33,7 +33,7 @@ export default class TaskInput extends Component<
       minLength: 0,
     };
 
-    if (!validate(descriptionValidatable)) alert("Invalid Input!");
+    if (!validate(descriptionValidatable)) alert("할 일을 입력하세요!");
     else return enteredDescription;
   }
 
