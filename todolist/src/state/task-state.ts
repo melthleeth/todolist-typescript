@@ -1,4 +1,7 @@
 import { Task, TaskStatus, TaskPriority } from "../models/task";
+import { HTTP_METHOD } from "../util/api";
+
+const TARGET_URL = import.meta.env.VITE_TARGET_URL;
 
 type Listener<T> = (items: T[]) => void;
 
@@ -16,6 +19,8 @@ export class TaskState extends State<Task> {
 
   private constructor() {
     super();
+
+    this.getTasksAll();
   }
 
   static getInstance() {
@@ -25,35 +30,91 @@ export class TaskState extends State<Task> {
     return this.instance;
   }
 
-  addTask(description: string) {
+  private async getTasksAll() {
+    const response = await fetch(`${TARGET_URL}`);
+    if (!response.ok) {
+      alert("fail to get tasks!");
+    }
+
+    const result = await response.json();
+    for (const item of result) {
+      this.tasks.push(
+        new Task(item.id, item.description, item.status, item.priority)
+      );
+    }
+    this.updateListeners();
+  }
+
+  async addTask(description: string) {
     const newTask = new Task(
-      Math.random().toString(),
+      Math.random().toString().substring(2),
       description,
       TaskStatus.Active,
       TaskPriority.Medium
     );
+
+    const response = await fetch(`${TARGET_URL}`, HTTP_METHOD("POST", newTask));
+
+    if (!response.ok) {
+      alert("fail to add tasks!");
+    }
+
     this.tasks.push(newTask);
     this.updateListeners();
   }
 
   toggleTask(taskId: string, newStatus: TaskStatus) {
-    const task = this.tasks.find((target) => target.id === taskId);
-    if (task && task.status !== newStatus) {
-      task.status = newStatus;
+    const taskIdx = this.tasks.findIndex((target) => target.id === taskId);
+    console.log(
+      "toggleTask - taskIdx",
+      taskIdx,
+      "task content: ",
+      this.tasks[taskIdx].description,
+      "status"
+    );
+    if (taskIdx && this.tasks[taskIdx].status !== newStatus) {
+      // 💡found toggle logic error: 실제 tasks[] 에서 값 변경이 이루어지지 않고 있었기 때문...
+      this.tasks[taskIdx].status = newStatus;
+      console.log(
+        "changed to",
+        this.tasks[taskIdx].status === TaskStatus.Finished
+          ? "active"
+          : "finished"
+      );
       this.updateListeners();
     }
   }
 
-  updateTask(taskId: string, newDesc: string) {
-    const task = this.tasks.find((target) => target.id === taskId);
-    if (task && task.description !== newDesc) {
-      task.description = newDesc;
+  async updateTask(taskId: string, newDesc: string) {
+    const taskIdx = this.tasks.findIndex((target) => target.id === taskId);
+    if (taskIdx && this.tasks[taskIdx].description !== newDesc) {
+      this.tasks[taskIdx].description = newDesc;
+
+      const response = await fetch(
+        `${TARGET_URL}`,
+        HTTP_METHOD("PUT", this.tasks[taskIdx])
+      );
+
+      if (!response.ok) {
+        alert("fail to update tasks!");
+      }
+
       this.updateListeners();
     }
   }
 
-  deleteTask(taskId: string) {
+  async deleteTask(taskId: string) {
     this.tasks = this.tasks.filter((t) => t.id !== taskId);
+
+    const response = await fetch(
+      `${TARGET_URL}/${taskId}`,
+      HTTP_METHOD("DELETE")
+    );
+
+    if (!response.ok) {
+      alert("fail to update tasks!");
+    }
+
     this.updateListeners();
   }
 
