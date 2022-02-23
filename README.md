@@ -49,10 +49,11 @@ yarn json-server --watch src/db.json
 > PP센터 실습
 
 - [ ] json-server와 연동하기
-  - [ ] task 불러오기 기능 구현
+  - [x] task 불러오기 기능 구현
   - [ ] task 완료하기 기능 구현
-  - [ ] task 추가하기 기능 구현
-  - [ ] task 삭제하기 기능 구현
+  - [x] task 추가하기 기능 구현
+  - [x] task 삭제하기 기능 구현
+- [ ] toggle error 수정
 - [ ] 발표 준비
 
 ## Wed, Feb 23rd, 2022 (5일차)
