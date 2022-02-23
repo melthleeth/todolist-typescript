@@ -17,8 +17,12 @@
   color: #B79EFF;
 }
 
-.grey {
+.grey-1 {
   color: #BCBCBC;
+}
+
+.grey-2 {
+  color: #e8e8e8;
 }
 
 * {
@@ -38,40 +42,45 @@ body {
 }
 
 .container {
-  width: 100vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   align-content: center;
 }
 
 #task-list {
+  height: 100%;
   margin: 0;
   margin-bottom: 2rem;
   padding: 0.5rem 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #task-list::-webkit-scrollbar {
-  width: 10px;
+  width: 0.75rem;
 }
 
 #task-list::-webkit-scrollbar-thumb {
-  background-color: #291F45;
+  background-color: #916BFF;
   border-radius: 10px;
 }
 
 #task-list::-webkit-scrollbar-track {
-  background-color: #BCBCBC;
+  background-color: #e8e8e8;
   border-radius: 10px;
-  box-shadow: inset 0px 0px 5px white;
+  /* box-shadow: inset 0px 0px 5px white; */
 }
 
 li {
   list-style: none;
 }
 
+::placeholder {
+  color: #BCBCBC;
+}
+
 input {
   border: 3px #B79EFF solid;
+  color: #291F45;
 }
 
 input:focus {
@@ -83,13 +92,16 @@ input:focus {
 #task-title {
   font-size: 3.5rem;
   font-weight: 300;
+  cursor: default;
 }
 
 #task-subtitle {
   display: flex;
   align-items: center;
   place-content: space-between;
+  margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+  cursor: default;
 }
 
 #info-time {
@@ -113,6 +125,7 @@ input:focus {
   height: 1.25rem;
   border: 0.15rem #B79EFF solid;
   border-radius: 10rem;
+  cursor: pointer;
 }
 
 .checkbox:hover {
@@ -133,7 +146,13 @@ input:focus {
 .task-item {
   display: flex;
   align-items: center;
-  height: 2.25rem;
+  height: fit-content;
+  align-items: center;
+}
+
+.task-item:hover {
+  opacity: 60%;
+  cursor: default;
 }
 
 .task-content {
@@ -144,6 +163,7 @@ input:focus {
   line-break: auto;
   white-space: normal;
   word-break: break-all;
+  vertical-align: middle;
 }
 
 .task-btns {
@@ -176,15 +196,23 @@ input:focus {
   border-radius: 1.675rem;
 }
 
+@media only screen and (max-height: 900px) {
+  .card {
+    height: 70%;
+  }
+}
+
 #btn-submit {
   height: 2.25rem;
   border-radius: 2rem;
+  cursor: pointer;
 }
 
 .btn-svg {
   background-color: white;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 .btn-svg:hover {
@@ -259,6 +287,10 @@ input:focus {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 
 .mb-6 {
