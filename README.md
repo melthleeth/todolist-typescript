@@ -1,22 +1,20 @@
-# Todolist Using TypeScript
+# 📝 TypeScript로 구현하는 todolist
 
 > SSG.COM 신입 인턴과제
 
 ✨Goal: TypeScript에 대한 이해
 
-## Start Project
-
-### Initialize the project
+## 프로젝트 시작하기
 
 ```bash
 yarn
-yarn dev
+yarn api
 ```
 
-### Run json-server
+### 서버 실행하기
 
 ```bash
-yarn json-server --watch src/db.json
+yarn server
 ```
 
 # Self Checklist
@@ -54,7 +52,6 @@ yarn json-server --watch src/db.json
   - [x] task 추가하기 기능 구현
   - [x] task 삭제하기 기능 구현
 - [ ] toggle error 수정
-- [ ] 발표 준비
 
 ## Wed, Feb 23rd, 2022 (5일차)
 
