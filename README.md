@@ -4,6 +4,13 @@
 
 ✨Goal: TypeScript에 대한 이해
 
+<h3 align="middle">프로젝트 결과물</h3>
+<p align="middle">
+<img width="600px;" src="https://user-images.githubusercontent.com/22411481/156029108-ab1246ed-4a34-4190-9b41-1f55a78420fc.gif"/>
+</p>
+
+</br>
+
 ## 프로젝트 시작하기
 
 ```bash
