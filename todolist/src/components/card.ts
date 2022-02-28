@@ -11,7 +11,7 @@ export default class Card extends Component<HTMLDivElement, HTMLDivElement> {
   get taskCount() {
     return this.element
       .querySelector("#task-list")!
-      .getElementsByTagName("li")
+      .getElementsByClassName("active")
       .length.toString();
   }
 

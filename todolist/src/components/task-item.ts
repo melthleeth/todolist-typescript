@@ -64,9 +64,6 @@ export class TaskItem extends Component<HTMLUListElement, HTMLLIElement> {
     if (isChecked) {
       togleBtn!.classList.add("checked");
       taskDescEl!.classList.add("completed");
-    } else {
-      togleBtn!.classList.remove("checked");
-      taskDescEl!.classList.remove("completed");
-    }
+    } else this.element.classList.add("active");
   }
 }
