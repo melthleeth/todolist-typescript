@@ -19,7 +19,6 @@ export class TaskState extends State<Task> {
 
   private constructor() {
     super();
-
     this.getTasksAll();
   }
 
@@ -63,44 +62,43 @@ export class TaskState extends State<Task> {
     this.updateListeners();
   }
 
-  toggleTask(taskId: string, newStatus: TaskStatus) {
+  async toggleTask(taskId: string) {
     const taskIdx = this.tasks.findIndex((target) => target.id === taskId);
-    console.log(
-      "toggleTask - taskIdx",
-      taskIdx,
-      "task content: ",
-      this.tasks[taskIdx].description,
-      "status"
+    const newStatus =
+      this.tasks[taskIdx].status === TaskStatus.Active
+        ? TaskStatus.Finished
+        : TaskStatus.Active;
+    this.tasks[taskIdx].status = newStatus;
+    const response = await fetch(
+      `${TARGET_URL}/${taskId}`,
+      HTTP_METHOD("PATCH", { status: newStatus })
     );
-    if (taskIdx && this.tasks[taskIdx].status !== newStatus) {
-      // 💡found toggle logic error: 실제 tasks[] 에서 값 변경이 이루어지지 않고 있었기 때문...
-      this.tasks[taskIdx].status = newStatus;
-      console.log(
-        "changed to",
-        this.tasks[taskIdx].status === TaskStatus.Finished
-          ? "active"
-          : "finished"
-      );
-      this.updateListeners();
+
+    if (!response.ok) {
+      alert("fail to toggle tasks!");
     }
+
+    this.updateListeners();
   }
 
   async updateTask(taskId: string, newDesc: string) {
     const taskIdx = this.tasks.findIndex((target) => target.id === taskId);
-    if (taskIdx && this.tasks[taskIdx].description !== newDesc) {
-      this.tasks[taskIdx].description = newDesc;
-
-      const response = await fetch(
-        `${TARGET_URL}`,
-        HTTP_METHOD("PUT", this.tasks[taskIdx])
-      );
-
-      if (!response.ok) {
-        alert("fail to update tasks!");
-      }
-
-      this.updateListeners();
+    if (taskIdx && this.tasks[taskIdx].description === newDesc) {
+      alert("이전 task와 같은 내용입니다!");
+      return;
     }
+    this.tasks[taskIdx].description = newDesc;
+
+    const response = await fetch(
+      `${TARGET_URL}/${taskId}`,
+      HTTP_METHOD("PATCH", { description: newDesc })
+    );
+
+    if (!response.ok) {
+      alert("fail to update tasks!");
+    }
+
+    this.updateListeners();
   }
 
   async deleteTask(taskId: string) {

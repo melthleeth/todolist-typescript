@@ -19,22 +19,7 @@ export class TaskItem extends Component<HTMLUListElement, HTMLLIElement> {
     event.preventDefault();
     const taskId = this.element.id;
 
-    const togleBtn = this.element.querySelector(".task-complete-button");
-    const taskDescEl = this.element.querySelector("span");
-
-    const isChecked = togleBtn!.classList.contains("checked");
-    console.log(isChecked);
-    if (!isChecked) {
-      togleBtn!.classList.add("checked");
-      taskDescEl!.classList.add("completed");
-    } else {
-      togleBtn!.classList.remove("checked");
-      taskDescEl!.classList.remove("completed");
-    }
-    taskState.toggleTask(
-      taskId,
-      isChecked ? TaskStatus.Active : TaskStatus.Finished
-    );
+    taskState.toggleTask(taskId);
   }
 
   @autobind
@@ -71,5 +56,17 @@ export class TaskItem extends Component<HTMLUListElement, HTMLLIElement> {
 
   renderContent() {
     this.element.querySelector("span")!.textContent = this.task.description;
+
+    const togleBtn = this.element.querySelector(".task-complete-button");
+    const taskDescEl = this.element.querySelector("span");
+
+    const isChecked = this.task.status === TaskStatus.Finished ? true : false;
+    if (isChecked) {
+      togleBtn!.classList.add("checked");
+      taskDescEl!.classList.add("completed");
+    } else {
+      togleBtn!.classList.remove("checked");
+      taskDescEl!.classList.remove("completed");
+    }
   }
 }
