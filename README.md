@@ -38,7 +38,7 @@ yarn server
 - [x] CSS 오류 수정 - 배경 linear-gradient 전체화면으로 안되는 문제
 - [x] task 추가하기 기능 구현
 - [x] task 완료하기 기능 구현 (toggle)
-  - [ ] error) toggle 제대로 안됨 (더블클릭해야 체크됨, 상위 체크박스 누르면 해제됨 (???))
+  - [x] error) toggle 제대로 안됨 (더블클릭해야 체크됨, 상위 체크박스 누르면 해제됨 (???)) (🔍해결)
 - [x] task 수정하기 기능 구현
 - [x] task 삭제하기 기능 구현
 
@@ -46,19 +46,18 @@ yarn server
 
 > PP센터 실습
 
-- [ ] json-server와 연동하기
+- [x] json-server와 연동하기 (🔍해결)
   - [x] task 불러오기 기능 구현
-  - [ ] task 완료하기 기능 구현
+  - [x] task 완료하기 기능 구현 (🔍해결)
   - [x] task 추가하기 기능 구현
   - [x] task 삭제하기 기능 구현
-- [ ] toggle error 수정
+- [x] toggle error 수정 (🔍해결)
 
 ## Wed, Feb 23rd, 2022 (5일차)
 
-- [ ] last edit
-- [ ] 발표 & 코드리뷰
-
-> 추가기능 구현 고민
+- [x] last edit
+- [x] 발표 & 코드리뷰
+- [x] toggle 남은 task count 되도록 수정 (🔍해결)
 
 ---
 
@@ -72,4 +71,35 @@ yarn server
 
 - [x] structure 잡기
 - [x] TS 추가
-- [ ] json-server 연동
+- [x] json-server 연동
+
+# 🔥Extra Work
+
+### General
+
+- [ ] 추가, 수정, 삭제시 snackbox message를 띄운다.
+- [ ] Title을 설정할 수 있다.
+- [ ] 오늘 날씨를 표시한다.
+- [ ] 중요도별 남은 할 일 개수를 알려준다.
+- [ ] progress bar를 상단에 보여준다.
+- [ ] prompt, alert 대신 modal window를 띄워준다.
+
+### ADD
+
+- [ ] dropbox로 중요도를 설정할 수 있다. (low, medium, high)
+- [ ] 생성시각이 DB에 저장된다.
+
+### VIEW
+
+- [ ] 완료된 목록 보기/숨기기를 할 수 있다.
+- [ ] 중요도 순으로 정렬할 수 있다.
+- [ ] 생성 날짜 순으로 정렬할 수 있다.
+- [ ] 가나다순으로 정렬할 수 있다.
+
+### EDIT
+
+- [ ] task 완료시 animation과 함께 체크 표시가 된다.
+- [ ] 체크박스가 아니라 리스트를 눌러도 task를 완료할 수 있다.
+- [ ] drap & drop으로 순서를 변경할 수 있다.
+- [ ] 내용 수정시 input box에 기존 내용을 끌어온다.
+- [ ] last edited 날짜를 표시한다. (optional)
